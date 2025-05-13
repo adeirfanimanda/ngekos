@@ -18,7 +18,14 @@ class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-tag';
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
+    protected static ?string $navigationGroup = 'Master Data';
 
     public static function form(Form $form): Form
     {
@@ -29,8 +36,7 @@ class CategoryResource extends Resource
                     ->maxLength(255)
                     ->debounce(500)
                     ->reactive()
-                    ->afterStateUpdated(function ($state, callable $set)
-                    {
+                    ->afterStateUpdated(function ($state, callable $set) {
                         $set('slug', Str::slug($state));
                     }),
                 Forms\Components\TextInput::make('slug')
@@ -41,18 +47,18 @@ class CategoryResource extends Resource
                     ->directory('categories')
                     ->required()
                     ->columnSpan(2),
-                ]);
+            ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('name')
-                ->sortable()
-                ->searchable(),
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('slug'),
-                Tables\Columns\ImageColumn::make('image')
             ])
             ->filters([
                 //

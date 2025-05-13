@@ -29,8 +29,7 @@ class CityResource extends Resource
                     ->maxLength(255)
                     ->debounce(500)
                     ->reactive()
-                    ->afterStateUpdated(function ($state, callable $set)
-                    {
+                    ->afterStateUpdated(function ($state, callable $set) {
                         $set('slug', Str::slug($state));
                     }),
                 Forms\Components\TextInput::make('slug')
@@ -48,7 +47,9 @@ class CityResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('name')
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('slug'),
                 Tables\Columns\ImageColumn::make('image')
             ])

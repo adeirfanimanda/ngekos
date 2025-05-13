@@ -25,30 +25,32 @@ class CategoryResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                ->required()
-                ->maxLength(255)
-                ->debounce(500)
-                ->reactive()
-                ->afterStateUpdated(function ($state, callable $set)
-                {
-                    $set('slug', Str::slug($state));
-                }),
-            Forms\Components\TextInput::make('slug')
-                ->required()
-                ->readOnly(),
-            Forms\Components\FileUpload::make('image')
-                ->image()
-                ->directory('cities')
-                ->required()
-                ->columnSpan(2),
-            ]);
+                    ->required()
+                    ->maxLength(255)
+                    ->debounce(500)
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $set)
+                    {
+                        $set('slug', Str::slug($state));
+                    }),
+                Forms\Components\TextInput::make('slug')
+                    ->required()
+                    ->readOnly(),
+                Forms\Components\FileUpload::make('image')
+                    ->image()
+                    ->directory('categories')
+                    ->required()
+                    ->columnSpan(2),
+                ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('name')
+                ->sortable()
+                ->searchable(),
                 Tables\Columns\TextColumn::make('slug'),
                 Tables\Columns\ImageColumn::make('image')
             ])

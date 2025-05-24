@@ -2,7 +2,7 @@
 
 namespace App\Interfaces;
 
-interface BoardingHouseRepositoryInterfaceRepositoryInterface
+interface BoardingHouseRepositoryInterface
 {
     public function getAllBoardingHouses($search = null, $city = null, $category = null);
 

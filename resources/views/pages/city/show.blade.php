@@ -25,7 +25,7 @@
 </div>
 <section id="Result" class=" relative flex flex-col gap-4 px-5 mt-5 mb-9">
     @foreach($boardingHouses as $boardingHouse)
-    <a href="{{ route('home') }}" class="card">
+    <a href="{{ route('kos.show', $boardingHouse->slug) }}" class="card">
         <div
             class="flex rounded-[30px] border border-[#F1F2F6] p-4 gap-4 bg-white hover:border-[#91BF77] transition-all duration-300">
             <div class="flex w-[120px] h-[183px] shrink-0 rounded-[30px] bg-[#D9D9D9] overflow-hidden">
@@ -42,13 +42,12 @@
                 <div class="flex items-center gap-[6px]">
                     <img src="{{ asset('assets/images/icons/profile-2user.svg') }}" class="w-5 h-5 flex shrink-0"
                         alt="icon">
-                    <p class="text-sm text-ngekos-grey">4 People</p>
+                    <p class="text-sm text-ngekos-grey">{{ $boardingHouse->rooms->first()->capacity }} Orang</p>
                 </div>
                 <hr class="border-[#F1F2F6]">
                 <p class="font-semibold text-lg text-ngekos-orange">Rp {{ number_format($boardingHouse->price, 0, ',', '.') }}<span
                         class="text-sm text-ngekos-grey font-normal">/bulan</span></p>
             </div>
-        </div>
         </div>
     </a>
     @endforeach

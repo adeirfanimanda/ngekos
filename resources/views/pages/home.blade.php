@@ -76,7 +76,7 @@
                             <div class="flex items-center gap-[6px]">
                                 <img src="assets/images/icons/profile-2user.svg" class="w-5 h-5 flex shrink-0"
                                     alt="icon">
-                                <p class="text-sm text-ngekos-grey">4 People</p>
+                                <p class="text-sm text-ngekos-grey">{{ $boardingHouse->rooms->first()->capacity }} Orang</p>
                             </div>
                             <hr class="border-[#F1F2F6]">
                             <p class="font-semibold text-lg text-ngekos-orange">Rp {{ number_format($boardingHouse->price, 0, ',', '.') }}<span
@@ -148,7 +148,7 @@
                     <div class="flex items-center gap-[6px]">
                         <img src="assets/images/icons/profile-2user.svg" class="w-5 h-5 flex shrink-0"
                             alt="icon">
-                        <p class="text-sm text-ngekos-grey">4 People</p>
+                        <p class="text-sm text-ngekos-grey">{{ $boardingHouse->rooms->first()->capacity }} Orang</p>
                     </div>
                     <hr class="border-[#F1F2F6]">
                     <p class="font-semibold text-lg text-ngekos-orange">Rp {{ number_format($boardingHouse->price, 0, ',', '.') }}<span

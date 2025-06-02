@@ -54,7 +54,7 @@
         </div>
         <div class="flex items-center gap-[6px]">
             <img src="{{ asset('assets/images/icons/profile-2user.svg') }}" class="w-[26px] h-[26px] flex shrink-0" alt="icon">
-            <p class="text-ngekos-grey">4 People</p>
+            <p class="text-ngekos-grey">{{ $boardingHouse->rooms->first()->capacity }} Orang</p>
         </div>
         <div class="flex items-center gap-[6px]">
             <img src="{{ asset('assets/images/icons/shield-tick.svg') }}" class="w-[26px] h-[26px] flex shrink-0" alt="icon">
@@ -161,9 +161,9 @@
                 <br>
                 <span class="text-sm font-normal">/bulan</span>
             </p>
-            <a href="room-available.html"
-                class="flex shrink-0 rounded-full py-[14px] px-5 bg-ngekos-orange font-bold text-white">Book
-                Now</a>
+            <a href="{{ route('kos.rooms', $boardingHouse->slug) }}"
+                class="flex shrink-0 rounded-full py-[14px] px-5 bg-ngekos-orange font-bold text-white">
+                Book Now</a>
         </div>
     </div>
 </div>

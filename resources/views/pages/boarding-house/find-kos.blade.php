@@ -63,3 +63,7 @@
 @include('includes.navigation')
 
 @endsection
+
+@section('scripts')
+<script src="{{ asset('assets/js/find-kos.js') }}"></script>
+@endsection

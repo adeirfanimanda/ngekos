@@ -22,27 +22,6 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     @yield('scripts')
-
-    <script>
-        // Get all tab buttons
-        const tabLinks = document.querySelectorAll('.tab-link');
-
-        // Add click event listener to each button
-        tabLinks.forEach(button => {
-            button.addEventListener('click', () => {
-                // Get the target tab id from the data attribute
-                const targetTab = button.getAttribute('data-target-tab');
-                console.log(targetTab)
-                // Hide all tab contents
-                document.querySelectorAll('.tab-content').forEach(content => {
-                    content.classList.add('hidden');
-                });
-
-                // Show the target tab content
-                document.querySelector(targetTab).classList.toggle('hidden');
-            });
-        });
-    </script>
 </body>
 
 </html>

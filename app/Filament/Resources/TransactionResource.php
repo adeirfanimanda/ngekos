@@ -48,15 +48,11 @@ class TransactionResource extends Resource
                     ->required(),
                 Forms\Components\Select::make('payment_method')
                     ->options([
-                        'down_paymeny' => 'Down Payment',
-                        'full_paymeny' => 'Full Payment',
+                        'down_payment' => 'Down Payment',
+                        'full_payment' => 'Full Payment',
                     ])
                     ->required(),
-                Forms\Components\Select::make('payment_status')
-                    ->options([
-                        'pending' => 'Pending',
-                        'paid' => 'Paid',
-                    ])
+                Forms\Components\TextInput::make('payment_status')
                     ->required(),
                 Forms\Components\DatePicker::make('start_date')
                     ->required(),
@@ -98,8 +94,8 @@ class TransactionResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                // Tables\Actions\EditAction::make(),
+                // Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -122,5 +118,10 @@ class TransactionResource extends Resource
             'create' => Pages\CreateTransaction::route('/create'),
             'edit' => Pages\EditTransaction::route('/{record}/edit'),
         ];
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
     }
 }

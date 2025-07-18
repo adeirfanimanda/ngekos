@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone_number');
             $table->enum('payment_method', ['down_payment', 'full_payment'])->nullable();
-            $table->enum('payment_status', ['pending', 'paid', 'cancelled'])->default('pending');
+            $table->enum('payment_status', ['pending', 'success', 'failed', 'expired', 'canceled', 'unknown'])->default('pending');
             $table->date('start_date');
             $table->integer('duration');
             $table->integer('total_amount')->nullable();
